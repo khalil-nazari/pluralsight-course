@@ -1,0 +1,107 @@
+npm install 
+
+
+
+#############################################
+#############################################
+
+
+create the files 
+/src/index.html
+/src/index.js
+
+
+
+#############################################
+#############################################
+
+
+create webpack file for development 
+webpack.config.dev.js
+
+
+#############################################
+#############################################
+
+configure babel.js
+add below in package.json
+
+"babel": {
+    "presets": [
+        "babel-preset-react-app"
+    ]
+}
+
+
+#############################################
+#############################################
+
+
+
+start webpack via npm script 
+add below to package.json
+"scripts": {
+    "start":"webpack-dev-server --config webpack.config.dev.js --port 3000"
+}
+
+
+#############################################
+#############################################
+
+Add ESLint in package.json and webpack.config.dev.js
+
+You can also add ESLint VS extension for better developement. 
+
+
+#############################################
+#############################################
+Summary : 
+
+ - Transpile : babel 
+ - Bundle: Webpack 
+ - Lint : ESLint
+ - Web Server : Webapck
+ - Generating index.html : webpack 
+ - Loading changes on save : webpack
+ - One command via npm script
+
+
+#############################################
+#############################################
+
+Four ways to create react components 
+1 - createClass
+very old way. we do not use it anymore.
+
+
+2 - ES class 
+class HelloWorld extends React.Component {
+    constractor () {
+        super(props)
+    }
+
+    render() {
+        return (
+            <div>   
+                <h1>Hello</h1>
+                <p>World</p>
+            </div>
+        ) 
+    }
+}
+
+
+3 - Function
+function HelloWorld () {
+    return (
+        <h1>Hello World</h1>
+    ) 
+}
+
+4 - Arrow function
+const HelloWorld =  (props)  => {
+    return (
+        <h1>Hello World</h1>
+    ) 
+}
+const HelloWorld = (props) => <h1>Hello World</h1>; 
