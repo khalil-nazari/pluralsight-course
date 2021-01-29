@@ -105,3 +105,111 @@ const HelloWorld =  (props)  => {
     ) 
 }
 const HelloWorld = (props) => <h1>Hello World</h1>; 
+
+
+
+#############################################
+REDUX
+#############################################
+######### ACTION : is a plain object containing description of an event 
+    1 - It has a type 
+    2 - It can receive data 
+        - object, 
+        - string, boolean, number...
+        - any serializable data
+
+### STORE 
+    let store = createStore(reducers)
+        - store.dispatch(action)        // dispatch an action
+        - store.subscribe(listener)     // subscribe to a listener
+        - store.getState()              // return its current state
+        - replaceReducer(nextReducer)   // replace a reducer
+
+        ( the only to change the store is by dispatching an action )
+        ( actions are hundled by reducers )
+        ( store are not directly changed by actions )
+
+### IMMUTABILITY 
+    - To change state, return a new object. 
+    - Returning new object NOT mutating state!
+    state = {
+        name : 'Khalil', 
+        role: 'author'
+    }
+    return state = {
+        name: 'Khalil Ahmad',
+        role: 'admin'
+    }
+    
+    Ways to copy the store 
+        - Object.assign
+            Object.assign(target, ...sources);
+            Object.assgin({}, state, {role:'admin'})
+
+        - { ...myObj }
+            const newState = { ...state, role:'admin' }
+            const newUsers = [...state.users]
+            ( immer, immutable.js library for copying big objects )
+        
+        - For Array mutating use 
+            - map, filter, reduce, concat, spread
+            - do not use (push,pop,reverse), must clone array first.
+        
+### HANDLING IMMUTABILITY 
+    - use immer, immutable.js
+
+### REDUCER : pure functions (state, action) => state
+    - Handle the dispatched actions
+    - takes state & action
+    - return new state
+    - counter example 
+        function myReducer(state, action) {
+            switch(action.type) {
+                case "INCREMENT_COUNTER"
+                    return {...state, counter: state.counter + 1 }
+                case "DECREMENT_COUNTER"
+                    return {...state, counter: state.counter -1 }
+                case default
+                    return state;
+            }
+        }
+    -
+
+
+
+
+#############################################
+React Redux
+#############################################
+
+react-redux 
+    - Provider ( attaches app to store )
+        Makes redux store accessible to every components in app. Provider component can be declared once in app.
+        <Provider store={this.props.store}>
+            <App />
+        </Provider>
+
+    - Connect ( Creates container components )
+
+
+
+#############################################
+Initial Redux Setup
+#############################################
+Setup redux 
+    1. create action
+    2. Create reducer 
+    3. create root reducer
+    4. configure store
+    5. Instantiate store 
+    6. Connect component
+    7. Pass props via connect 
+    8. dispatch action
+Add Features
+    1. Create action
+    2. inhance reducer
+    3. connect component
+    4. dispatch action 
+
+
+
